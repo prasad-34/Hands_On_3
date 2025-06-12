@@ -1,0 +1,18 @@
+
+SELECT
+ID,
+FIRST_NAME,
+LAST_NAME,
+EMAIL,
+AGE,
+GENDER,
+STATE,
+STREET_ADDRESS,
+POSTAL_CODE,
+CITY,
+COUNTRY,
+LATITUDE,
+LONGITUDE,
+TRAFFIC_SOURCE,
+TRY_TO_TIMESTAMP(REPLACE(created_at, ' UTC', '')) AS created_at
+from {{source('elook_commerce','users')}}

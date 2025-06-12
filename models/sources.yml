@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: elook_commerce
+    database: ELOOK_COMMERCE
+    schema: RAW
+    tables:
+      - name: orders
+        description: "Contains order-level details"
+
+      - name: order_items
+        description: "Contains ordered items in each order"
+
+      - name: users
+        description: "Contains user information"
+
+      - name: products
+        description: "Contains product catalog details"
