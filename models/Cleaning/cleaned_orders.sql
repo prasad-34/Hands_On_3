@@ -12,8 +12,8 @@ SELECT
     o.user_id,
     o.status,
     o.gender,
-    {{ time_travel('created_at', 10, 'day') }} AS created_at,
-    {{ time_travel('shipped_at', -5, 'year') }} AS shipped_at,
+    created_at,
+    shipped_at,
     o.returned_at,
     o.delivered_at,
     COALESCE(ic.num_of_items, 0) AS num_of_items  -- include derived column here
