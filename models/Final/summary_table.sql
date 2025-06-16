@@ -3,5 +3,5 @@
 SELECT DISTINCT
     o.status AS Status
 
-FROM {{ ref('Stg_orders') }} AS o
+FROM {{ ref('int_orders') }} AS o
    

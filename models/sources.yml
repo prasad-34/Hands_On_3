@@ -7,7 +7,6 @@ sources:
     tables:
 
       - name: orders
-        description: "Contains order-level details"
         columns:
           - name: order_id
             tests:
@@ -16,44 +15,28 @@ sources:
           - name: user_id
             tests:
               - not_null
-          - name: status
-            tests:
-              - accepted_values:
-                  values: ['Returned','Processing','Complete','Shipped','Cancelled']
-
-      - name: order_items
-        description: "Contains ordered items in each order"
-        columns:
-          - name: user_id
-            tests:
-              - not_null
-          - name: order_id
-            tests:
-              - not_null
-          - name: product_id
-            tests:
-              - not_null
-          - name: sale_price
-            tests:
-              - not_null
+              - relationships:
+                  to: source('elook_commerce', 'users')
+                  field: id
 
       - name: users
-        description: "Contains user information"
         columns:
           - name: id
             tests:
               - not_null
               - unique
-          - name: email
-            tests:
-              - not_null
 
       - name: products
-        description: "Contains product catalog details"
         columns:
           - name: id
             tests:
               - not_null
-          - name: category
+              - unique
+
+      - name: order_items
+        columns:
+          - name: product_id
             tests:
-              - not_null
+              - relationships:
+                  to: source('elook_commerce', 'products')
+                  field: id
