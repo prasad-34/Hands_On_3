@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+
+  - name: cleaned_order_items
+    columns:
+      - name: order_id
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id

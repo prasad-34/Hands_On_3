@@ -5,14 +5,38 @@ sources:
     database: ELOOK_COMMERCE
     schema: RAW
     tables:
-      - name: orders
-        description: "Contains order-level details"
 
-      - name: order_items
-        description: "Contains ordered items in each order"
+      - name: orders
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+              - unique
+          - name: user_id
+            tests:
+              - not_null
+              - relationships:
+                  to: source('elook_commerce', 'users')
+                  field: id
 
       - name: users
-        description: "Contains user information"
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
 
       - name: products
-        description: "Contains product catalog details"
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+
+      - name: order_items
+        columns:
+          - name: product_id
+            tests:
+              - relationships:
+                  to: source('elook_commerce', 'products')
+                  field: id
