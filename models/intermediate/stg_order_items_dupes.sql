@@ -5,4 +5,4 @@ FROM (
     FROM {{ ref('int_orderItems') }}
     QUALIFY COUNT(*) OVER (PARTITION BY order_id, product_id) > 1
 ) t
-WHERE row_num = 1
+WHERE row_num =1

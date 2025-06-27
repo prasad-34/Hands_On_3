@@ -9,7 +9,7 @@ JOIN {{ ref("int_orders") }} AS o
 JOIN {{ ref("int_users") }} AS u
     ON oi.user_id = u.ID
 WHERE o.status NOT IN ('Cancelled', 'Returned')
-GROUP BY u.FIRST_NAME, u.LAST_NAME
+GROUP BY u.id, u.FIRST_NAME, u.LAST_NAME
 ORDER BY TotalAmountSpent DESC
 FETCH FIRST 5 ROWS ONLY
 

@@ -10,5 +10,5 @@ JOIN {{ ref("int_products") }} AS p
 WHERE o.status NOT IN ('Cancelled', 'Returned')
 GROUP BY p.category
 ORDER BY TotalRevenue DESC
-FETCH FIRST 5 ROWS ONLY
+
 
